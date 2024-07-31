@@ -1,22 +1,21 @@
 ﻿using System.Text;
 
-namespace DataDeCoded.SinglyLinkedList;
+namespace DataDeCoded.DoublyLinkedList;
 
-public class LinkedList<T>
+public class DoublyLinkedList<T>
 {
-    public LinkedListNode<T> Head { get; set; } = null;
-    public LinkedListNode<T> Tail { get; set; } = null;
-
+    public DoublyLinkedListNode<T> Head { get; set; } = null;
+    public DoublyLinkedListNode<T> Tail { get; set; } = null;
     public int Length = 0;
-    public LinkedListIterator<T> Begin()
+    public DoublyLinkedListIterator<T> Begin()
     {
-        LinkedListIterator<T> itr = new(this.Head);
+        DoublyLinkedListIterator<T> itr = new(this.Head);
         return itr;
     }
     public void Print()
     {
         StringBuilder result = new();
-        for (LinkedListIterator<T> itr = this.Begin(); itr.GetCurrent() is not null; itr.MoveNext())
+        for (DoublyLinkedListIterator<T> itr = this.Begin(); itr.GetCurrent() is not null; itr.MoveNext())
         {
             result.Append(itr.Data());
             result.Append(" -> ");
@@ -28,7 +27,7 @@ public class LinkedList<T>
     {
         return Head == null;
     }
-    public bool IsTail(LinkedListNode<T> node)
+    public bool IsTail(DoublyLinkedListNode<T> node)
     {
         if (Tail == node)
         {
@@ -39,7 +38,7 @@ public class LinkedList<T>
             return false;
         }
     }
-    public bool IsHead(LinkedListNode<T> node)
+    public bool IsHead(DoublyLinkedListNode<T> node)
     {
         if (Head == node)
         {
@@ -50,7 +49,7 @@ public class LinkedList<T>
             return false;
         }
     }
-    public LinkedListNode<T> Find(T data)
+    public DoublyLinkedListNode<T> Find(T data)
     {
         if (data is null || IsEmpty())
         {
@@ -58,7 +57,7 @@ public class LinkedList<T>
         }
         else
         {
-            for (LinkedListIterator<T> itr = this.Begin(); itr.GetCurrent() is not null; itr.MoveNext())
+            for (DoublyLinkedListIterator<T> itr = this.Begin(); itr.GetCurrent() is not null; itr.MoveNext())
             {
                 if (itr.Data().Equals(data))
                     return itr.GetCurrent();
@@ -66,83 +65,77 @@ public class LinkedList<T>
             return null;
         }
     }
-    public LinkedListNode<T> FindParent(T data)
-    {
-        if (data is null || IsEmpty())
-        {
-            return null;
-        }
-        else
-        {
-            for (LinkedListIterator<T> itr = this.Begin(); itr.GetCurrent() is not null; itr.MoveNext())
-            {
-                if (itr.GetCurrent().Next is not null && itr.GetCurrent().Next.Data.Equals(data))
-                    return itr.GetCurrent();
-            }
-            return null;
-        }
-    }
     public void InsertLast(T data)
     {
-        LinkedListNode<T> newNode = new(data);
+        DoublyLinkedListNode<T> newNode = new(data);
         if (IsEmpty())
         {
             Head = newNode;
             Tail = newNode;
+            newNode.Previous = null;
+            newNode.Next = null;
             Length += 1;
         }
         else
         {
             Tail.Next = newNode;
+            newNode.Previous = Tail;
             Tail = newNode;
+            newNode.Next = null;
             Length += 1;
         }
     }
     public void InsertAfter(T nodeData, T data)
     {
-        LinkedListNode<T> node = Find(nodeData);
+        DoublyLinkedListNode<T> node = Find(nodeData),
+                                newNode = new(data);
 
-        LinkedListNode<T> newNode = new(data);
-
-        if (IsTail(node))
+        if (node is null)
+        {
+            return;
+        }
+        else if (IsTail(node))
         {
             Tail.Next = newNode;
+            newNode.Previous = Tail;
             Tail = newNode;
             Length += 1;
         }
         else
         {
             newNode.Next = node.Next;
+            newNode.Previous = node;
             node.Next = newNode;
             Length += 1;
         }
     }
     public void InsertBefore(T nodeData, T data)
     {
-        LinkedListNode<T> node = Find(nodeData),
-                          nodeParent = FindParent(nodeData),
-                          newNode = new(data);
+        DoublyLinkedListNode<T> node = Find(nodeData),
+                                newNode = new(data);
 
         if (node is null)
         {
             return;
         }
-        if (IsHead(node) || nodeParent is null)
+        else if (IsHead(node))
         {
             newNode.Next = Head;
             Head = newNode;
+            newNode.Previous = null;
             Length += 1;
         }
         else
         {
-            nodeParent.Next = newNode;
             newNode.Next = node;
+            newNode.Previous = node.Previous;
+            node.Previous.Next = newNode;
             Length += 1;
         }
     }
     public bool DeleteNode(T data)
     {
-        LinkedListNode<T> node = Find(data);
+        DoublyLinkedListNode<T> node = Find(data);
         if (node is null)
         {
             return false;
@@ -156,25 +149,29 @@ public class LinkedList<T>
         else if (IsHead(node))
         {
             Head = node.Next;
+            node.Next.Previous = null;
             Length -= 1;
             return true;
         }
         else
         {
-            LinkedListNode<T> parent = FindParent(data);
+            DoublyLinkedListNode<T> previous = node.Previous;
             if (IsTail(node))
             {
-                parent.Next = null;
-                Tail = parent;
+                Tail = previous;
+                previous.Next = null;
                 Length -= 1;
                 return true;
             }
             else
             {
-                parent.Next = node.Next;
+                previous.Next = node.Next;
+                node.Next.Previous = node.Previous;
                 Length -= 1;
                 return true;
             }
         }
     }
+
+
 }

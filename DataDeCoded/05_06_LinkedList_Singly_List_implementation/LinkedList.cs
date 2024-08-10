@@ -7,6 +7,7 @@ public class LinkedList<T>
     public LinkedListNode<T> Head { get; set; } = null;
     public LinkedListNode<T> Tail { get; set; } = null;
     public bool IsAllowDuplicates { get; set; } = false;
+
     public int Length = 0;
     public LinkedList(bool? isAllowDuplicates)
     {
@@ -180,6 +181,25 @@ public class LinkedList<T>
         }
         Length += 1;
     }
+    public void InsertFirst(T data)
+    {
+        if (!CanInsert(data))
+        {
+            return;
+        }
+        LinkedListNode<T> newNode = new(data);
+        if (IsEmpty())
+        {
+            Head = newNode;
+            Tail = newNode;
+        }
+        else
+        {
+            newNode.Next = Head;
+            Head = newNode;
+        }
+        Length += 1;
+    }
     public bool DeleteNode(T data)
     {
         LinkedListNode<T> node = Find(data);
@@ -216,5 +236,32 @@ public class LinkedList<T>
                 return true;
             }
         }
+    }
+    public void DeleteHead()
+    {
+        if (IsEmpty())
+        {
+            return;
+        }
+        else
+        {
+            Head = Head.Next;
+        }
+        Length -= 1;
+    }
+    public LinkedList<T> CopyTo(LinkedList<T> newList)
+    {
+        LinkedListIterator<T> itr = Begin();
+        if (!IsEmpty())
+        {
+            do
+            {
+                newList.InsertLast(itr.Data());
+                itr.MoveNext();
+            } while (itr.CanMoveNext());
+
+            newList.InsertLast(itr.Data());
+        }
+        return newList;
     }
 }

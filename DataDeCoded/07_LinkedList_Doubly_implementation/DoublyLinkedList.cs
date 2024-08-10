@@ -174,6 +174,25 @@ public class DoublyLinkedList<T>
         }
         Length += 1;
     }
+    public void InsertFirst(T data)
+    {
+        if (!CanInsert(data))
+        {
+            return;
+        }
+        DoublyLinkedListNode<T> newNode = new(data);
+        if (IsEmpty())
+        {
+            Head = newNode;
+            Tail = newNode;
+        }
+        else
+        {
+            newNode.Next = Head;
+            Head = newNode;
+        }
+        Length += 1;
+    }
     public bool DeleteNode(T data)
     {
         DoublyLinkedListNode<T> node = Find(data);
@@ -213,6 +232,20 @@ public class DoublyLinkedList<T>
             }
         }
     }
+
+    public void DeleteHead()
+    {
+        if (IsEmpty())
+        {
+            return;
+        }
+        else
+        {
+            Head = Head.Next;
+        }
+        Length -= 1;
+    }
+
     public DoublyLinkedList<T> CopyTo(DoublyLinkedList<T> newList)
     {
         DoublyLinkedListIterator<T> itr = Begin();

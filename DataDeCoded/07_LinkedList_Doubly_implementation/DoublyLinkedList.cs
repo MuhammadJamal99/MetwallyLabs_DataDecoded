@@ -7,6 +7,14 @@ public class DoublyLinkedList<T>
     public DoublyLinkedListNode<T> Head { get; set; } = null;
     public DoublyLinkedListNode<T> Tail { get; set; } = null;
     public int Length = 0;
+    public bool IsAllowDuplicates { get; set; } = false;
+    public DoublyLinkedList(bool? isAllowDuplicates)
+    {
+        Head = null;
+        Tail = null;
+        Length = 0;
+        IsAllowDuplicates = isAllowDuplicates ?? false;
+    }
     public DoublyLinkedListIterator<T> Begin()
     {
         DoublyLinkedListIterator<T> itr = new(this.Head);
@@ -49,6 +57,29 @@ public class DoublyLinkedList<T>
             return false;
         }
     }
+    public bool IsExists(T data)
+    {
+        if (Find(data) is not null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool CanInsert(T data)
+    {
+        if (!IsAllowDuplicates && IsExists(data))
+        {
+            Console.WriteLine("Data {0} Already Exists", data);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     public DoublyLinkedListNode<T> Find(T data)
     {
         if (data is null || IsEmpty())
@@ -67,6 +98,10 @@ public class DoublyLinkedList<T>
     }
     public void InsertLast(T data)
     {
+        if (!CanInsert(data))
+        {
+            return;
+        }
         DoublyLinkedListNode<T> newNode = new(data);
         if (IsEmpty())
         {
@@ -74,7 +109,6 @@ public class DoublyLinkedList<T>
             Tail = newNode;
             newNode.Previous = null;
             newNode.Next = null;
-            Length += 1;
         }
         else
         {
@@ -82,11 +116,16 @@ public class DoublyLinkedList<T>
             newNode.Previous = Tail;
             Tail = newNode;
             newNode.Next = null;
-            Length += 1;
+
         }
+        Length += 1;
     }
     public void InsertAfter(T nodeData, T data)
     {
+        if (!CanInsert(data))
+        {
+            return;
+        }
         DoublyLinkedListNode<T> node = Find(nodeData),
                                 newNode = new(data);
 
@@ -99,18 +138,21 @@ public class DoublyLinkedList<T>
             Tail.Next = newNode;
             newNode.Previous = Tail;
             Tail = newNode;
-            Length += 1;
         }
         else
         {
             newNode.Next = node.Next;
             newNode.Previous = node;
             node.Next = newNode;
-            Length += 1;
         }
+        Length += 1;
     }
     public void InsertBefore(T nodeData, T data)
     {
+        if (!CanInsert(data))
+        {
+            return;
+        }
         DoublyLinkedListNode<T> node = Find(nodeData),
                                 newNode = new(data);
 
@@ -123,15 +165,14 @@ public class DoublyLinkedList<T>
             newNode.Next = Head;
             Head = newNode;
             newNode.Previous = null;
-            Length += 1;
         }
         else
         {
             newNode.Next = node;
             newNode.Previous = node.Previous;
             node.Previous.Next = newNode;
-            Length += 1;
         }
+        Length += 1;
     }
     public bool DeleteNode(T data)
     {
@@ -172,6 +213,19 @@ public class DoublyLinkedList<T>
             }
         }
     }
+    public DoublyLinkedList<T> CopyTo(DoublyLinkedList<T> newList)
+    {
+        DoublyLinkedListIterator<T> itr = Begin();
+        if (!IsEmpty())
+        {
+            do
+            {
+                newList.InsertLast(itr.Data());
+                itr.MoveNext();
+            } while (itr.CanMoveNext());
 
-
+            newList.InsertLast(itr.Data());
+        }
+        return newList;
+    }
 }

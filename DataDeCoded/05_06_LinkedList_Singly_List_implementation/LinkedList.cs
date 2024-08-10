@@ -6,8 +6,15 @@ public class LinkedList<T>
 {
     public LinkedListNode<T> Head { get; set; } = null;
     public LinkedListNode<T> Tail { get; set; } = null;
-
+    public bool IsAllowDuplicates { get; set; } = false;
     public int Length = 0;
+    public LinkedList(bool? isAllowDuplicates)
+    {
+        Head = null;
+        Tail = null;
+        IsAllowDuplicates = isAllowDuplicates ?? false;
+        Length = 0;
+    }
     public LinkedListIterator<T> Begin()
     {
         LinkedListIterator<T> itr = new(this.Head);
@@ -50,6 +57,29 @@ public class LinkedList<T>
             return false;
         }
     }
+    public bool IsExists(T data)
+    {
+        if (Find(data) is not null)
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+    }
+    public bool CanInsert(T data)
+    {
+        if (!IsAllowDuplicates && IsExists(data))
+        {
+            Console.WriteLine("Data {0} Already Exists", data);
+            return false;
+        }
+        else
+        {
+            return true;
+        }
+    }
     public LinkedListNode<T> Find(T data)
     {
         if (data is null || IsEmpty())
@@ -84,22 +114,29 @@ public class LinkedList<T>
     }
     public void InsertLast(T data)
     {
+        if (!CanInsert(data))
+        {
+            return;
+        }
         LinkedListNode<T> newNode = new(data);
         if (IsEmpty())
         {
             Head = newNode;
             Tail = newNode;
-            Length += 1;
         }
         else
         {
             Tail.Next = newNode;
             Tail = newNode;
-            Length += 1;
         }
+        Length += 1;
     }
     public void InsertAfter(T nodeData, T data)
     {
+        if (!CanInsert(data))
+        {
+            return;
+        }
         LinkedListNode<T> node = Find(nodeData);
 
         LinkedListNode<T> newNode = new(data);
@@ -108,17 +145,21 @@ public class LinkedList<T>
         {
             Tail.Next = newNode;
             Tail = newNode;
-            Length += 1;
         }
         else
         {
             newNode.Next = node.Next;
             node.Next = newNode;
-            Length += 1;
+
         }
+        Length += 1;
     }
     public void InsertBefore(T nodeData, T data)
     {
+        if (!CanInsert(data))
+        {
+            return;
+        }
         LinkedListNode<T> node = Find(nodeData),
                           nodeParent = FindParent(nodeData),
                           newNode = new(data);
@@ -131,14 +172,13 @@ public class LinkedList<T>
         {
             newNode.Next = Head;
             Head = newNode;
-            Length += 1;
         }
         else
         {
             nodeParent.Next = newNode;
             newNode.Next = node;
-            Length += 1;
         }
+        Length += 1;
     }
     public bool DeleteNode(T data)
     {
@@ -156,7 +196,7 @@ public class LinkedList<T>
         else if (IsHead(node))
         {
             Head = node.Next;
-            Length -= 1;
+
             return true;
         }
         else

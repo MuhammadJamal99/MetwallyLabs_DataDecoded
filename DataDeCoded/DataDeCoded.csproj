@@ -8,7 +8,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="10_Stack_LinkedList_based\" />
+    <Folder Include="11_Stack_Array_based\" />
   </ItemGroup>
 
 </Project>

@@ -29,14 +29,14 @@
 
 #region DoublyLinkedList
 
-DataDeCoded.DoublyLinkedList.DoublyLinkedList<int> myList = new(false);
-myList.InsertLast(1);
-myList.Print();
+//DataDeCoded.DoublyLinkedList.DoublyLinkedList<int> myList = new(false);
+//myList.InsertLast(1);
+//myList.Print();
 
-myList.InsertLast(2);
-myList.InsertLast(2);
-myList.InsertLast(3);
-myList.Print();
+//myList.InsertLast(2);
+//myList.InsertLast(2);
+//myList.InsertLast(3);
+//myList.Print();
 
 //myList.InsertLast(4);
 //myList.Print();
@@ -56,4 +56,17 @@ myList.Print();
 //copiedList.Print();
 
 
+#endregion
+
+#region StackLinkedListBased
+using DataDeCoded.StackLinkedListbased;
+
+StackLinkedListBased<int> myStack = new(false);
+myStack.Push(0);
+myStack.Push(1);
+myStack.Push(2);
+myStack.Push(3);
+myStack.Push(4);
+myStack.Push(5);
+myStack.Print();
 #endregion

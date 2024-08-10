@@ -6,8 +6,9 @@ public class DoublyLinkedList<T>
 {
     public DoublyLinkedListNode<T> Head { get; set; } = null;
     public DoublyLinkedListNode<T> Tail { get; set; } = null;
-    public int Length = 0;
     public bool IsAllowDuplicates { get; set; } = false;
+
+    public int Length = 0;
     public DoublyLinkedList(bool? isAllowDuplicates)
     {
         Head = null;

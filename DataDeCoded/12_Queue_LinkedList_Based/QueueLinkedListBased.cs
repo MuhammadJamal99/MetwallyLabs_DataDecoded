@@ -45,7 +45,7 @@ public class QueueLinkedListBased<T>
             result.Append(string.Format(" {0} ", itr.Data()));
         }
         result.Append("     \n       ----------------------------------      \n");
-        Console.WriteLine("         Queue \n{0}       Size: {1} \n", result.ToString(), _baseList.Length);
+        Console.WriteLine("         Queue \n{0}       Size: {1} \n", result.ToString(), Size());
     }
     public int Size()
     {

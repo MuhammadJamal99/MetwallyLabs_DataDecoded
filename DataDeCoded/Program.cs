@@ -59,8 +59,6 @@
 #endregion
 
 #region StackLinkedListBased
-using DataDeCoded.StackArrayBased;
-
 //StackLinkedListBased<int> myLinkedListStack = new(false);
 //myLinkedListStack.Push(0);
 //myLinkedListStack.Push(1);
@@ -79,22 +77,35 @@ using DataDeCoded.StackArrayBased;
 #endregion
 
 #region StackArrayBased
+//StackArrayBased<int> myArrayStack = new(false);
+//myArrayStack.Push(0);
+//myArrayStack.Push(0);
+//myArrayStack.Push(1);
+//myArrayStack.Push(2);
+//myArrayStack.Push(3);
+//myArrayStack.Push(4);
+//myArrayStack.Push(5);
+//myArrayStack.Push(5);
+//myArrayStack.Print();
 
-StackArrayBased<int> myArrayStack = new(false);
-myArrayStack.Push(0);
-myArrayStack.Push(0);
-myArrayStack.Push(1);
-myArrayStack.Push(2);
-myArrayStack.Push(3);
-myArrayStack.Push(4);
-myArrayStack.Push(5);
-myArrayStack.Push(5);
-myArrayStack.Print();
-
-myArrayStack.Pop();
-myArrayStack.Print();
+//myArrayStack.Pop();
+//myArrayStack.Print();
 
 
-myArrayStack.Pop();
-myArrayStack.Print();
+//myArrayStack.Pop();
+//myArrayStack.Print();
+#endregion
+
+#region QueueLinkedListBased
+using DataDeCoded.QueueLinkedListBased;
+
+QueueLinkedListBased<int> myLinkedListQueue = new(false);
+
+myLinkedListQueue.EnQueue(0);
+myLinkedListQueue.EnQueue(1);
+myLinkedListQueue.EnQueue(2);
+myLinkedListQueue.EnQueue(3);
+
+myLinkedListQueue.Print();
+
 #endregion

@@ -45,7 +45,7 @@ public class StackLinkedListBased<T>
             result.Append("    |\n");
         }
         result.Append("\n___________\n");
-        Console.WriteLine("Stack: \n{0} Size: {1}", result.ToString(), _baseList.Length);
+        Console.WriteLine("   Stack \n{0} Size: {1} \n", result.ToString(), _baseList.Length);
     }
     public int Size()
     {

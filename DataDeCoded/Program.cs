@@ -59,14 +59,40 @@
 #endregion
 
 #region StackLinkedListBased
-using DataDeCoded.StackLinkedListbased;
+using DataDeCoded.StackArrayBased;
 
-StackLinkedListBased<int> myStack = new(false);
-myStack.Push(0);
-myStack.Push(1);
-myStack.Push(2);
-myStack.Push(3);
-myStack.Push(4);
-myStack.Push(5);
-myStack.Print();
+//StackLinkedListBased<int> myLinkedListStack = new(false);
+//myLinkedListStack.Push(0);
+//myLinkedListStack.Push(1);
+//myLinkedListStack.Push(2);
+//myLinkedListStack.Push(3);
+//myLinkedListStack.Push(4);
+//myLinkedListStack.Push(5);
+//myLinkedListStack.Print();
+
+//myLinkedListStack.Pop();
+//myLinkedListStack.Print();
+
+
+//myLinkedListStack.Pop();
+//myLinkedListStack.Print();
+#endregion
+
+#region StackArrayBased
+
+StackArrayBased<int> myArrayStack = new(false);
+myArrayStack.Push(0);
+myArrayStack.Push(1);
+myArrayStack.Push(2);
+myArrayStack.Push(3);
+myArrayStack.Push(4);
+myArrayStack.Push(5);
+myArrayStack.Print();
+
+myArrayStack.Pop();
+myArrayStack.Print();
+
+
+myArrayStack.Pop();
+myArrayStack.Print();
 #endregion

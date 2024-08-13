@@ -29,6 +29,11 @@ public class StackArrayBased<T>
     public void Push(T data)
     {
         ReSizeOrNot();
+        if (!IsEmpty() && (Array.IndexOf(_baseArray, data) >= 0) && !_isAllowDuplicates.Value)
+        {
+            Console.WriteLine("{0} Already Exists", data);
+            return;
+        }
         _baseArray[_topIndex + 1] = data;
         _topIndex++;
     }
@@ -65,10 +70,10 @@ public class StackArrayBased<T>
             result.Append("    |\n");
         }
         result.Append("\n___________\n");
-        Console.WriteLine("   Stack \n{0} Size: {1} \n", result.ToString(), _topIndex + 1);
+        Console.WriteLine("   Stack \n{0} Size: {1} \n", result.ToString(), Size());
     }
     public int Size()
     {
-        return _baseArray.Length;
+        return _topIndex + 1;
     }
 }

@@ -82,10 +82,12 @@ using DataDeCoded.StackArrayBased;
 
 StackArrayBased<int> myArrayStack = new(false);
 myArrayStack.Push(0);
+myArrayStack.Push(0);
 myArrayStack.Push(1);
 myArrayStack.Push(2);
 myArrayStack.Push(3);
 myArrayStack.Push(4);
+myArrayStack.Push(5);
 myArrayStack.Push(5);
 myArrayStack.Print();
 

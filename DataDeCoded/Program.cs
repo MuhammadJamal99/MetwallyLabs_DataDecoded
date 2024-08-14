@@ -97,15 +97,52 @@
 #endregion
 
 #region QueueLinkedListBased
-using DataDeCoded.QueueLinkedListBased;
+using DataDeCoded.QueueArrayBased;
 
-QueueLinkedListBased<int> myLinkedListQueue = new(false);
+//QueueLinkedListBased<int> myLinkedListQueue = new(false);
 
-myLinkedListQueue.EnQueue(0);
-myLinkedListQueue.EnQueue(1);
-myLinkedListQueue.EnQueue(2);
-myLinkedListQueue.EnQueue(3);
+//myLinkedListQueue.EnQueue(0);
+//myLinkedListQueue.EnQueue(1);
+//myLinkedListQueue.EnQueue(2);
+//myLinkedListQueue.EnQueue(3);
 
-myLinkedListQueue.Print();
+//myLinkedListQueue.Print();
+
+#endregion
+
+
+#region QueueLinkedListBased
+
+QueueArrayBased<int> myArrayQueue = new(false);
+
+myArrayQueue.EnQueue(0);
+myArrayQueue.EnQueue(1);
+myArrayQueue.EnQueue(2);
+myArrayQueue.EnQueue(3);
+myArrayQueue.EnQueue(4);
+myArrayQueue.EnQueue(5);
+myArrayQueue.EnQueue(6);
+myArrayQueue.EnQueue(7);
+myArrayQueue.EnQueue(8);
+myArrayQueue.EnQueue(9);
+myArrayQueue.EnQueue(10);
+myArrayQueue.EnQueue(11);
+myArrayQueue.Print();
+
+myArrayQueue.DeQueue();
+myArrayQueue.Print();
+
+myArrayQueue.DeQueue();
+myArrayQueue.Print();
+
+myArrayQueue.DeQueue();
+myArrayQueue.Print();
+
+myArrayQueue.DeQueue();
+myArrayQueue.Print();
+
+Console.WriteLine(myArrayQueue.Top());
+
+myArrayQueue.Print();
 
 #endregion

@@ -99,6 +99,7 @@
 #region QueueLinkedListBased
 using DataDeCoded.DictionaryArrayBased;
 using DataDeCoded.DictionaryLinkedListBased;
+using DataDeCoded.HashTableFunctions;
 using DataDeCoded.QueueArrayBased;
 
 //QueueLinkedListBased<int> myLinkedListQueue = new(false);
@@ -174,29 +175,40 @@ using DataDeCoded.QueueArrayBased;
 #endregion
 
 #region DictionaryLinkedListBased
-DictionaryLinkedListBased<string, int> myDic = new DictionaryLinkedListBased<string, int>();
-myDic.Set("zero", 0);
-myDic.Set("one", 1);
-Console.WriteLine(myDic.Get("one"));
-Console.WriteLine(myDic.Remove("zero"));
-myDic.Print();
+//DictionaryLinkedListBased<string, int> myDic = new DictionaryLinkedListBased<string, int>();
+//myDic.Set("zero", 0);
+//myDic.Set("one", 1);
+//Console.WriteLine(myDic.Get("one"));
+//Console.WriteLine(myDic.Remove("zero"));
+//myDic.Print();
 
-myDic.Set("two", 2);
-myDic.Set("three", 3);
-Console.WriteLine(myDic.Remove("three"));
-myDic.Print();
-myDic.Set("four", 4);
-Console.WriteLine(myDic.Get("three"));
-myDic.Set("five", 5);
-Console.WriteLine(myDic.Get("four"));
-myDic.Set("six", 6);
-Console.WriteLine(myDic.Remove("five"));
-Console.WriteLine(myDic.Remove("six"));
-Console.WriteLine(myDic.Remove("two"));
-Console.WriteLine(myDic.Remove("one"));
-Console.WriteLine(myDic.Remove("four"));
-myDic.Print();
-myDic.Set("zero", 0);
-myDic.Set("one", 1);
-myDic.Print();
+//myDic.Set("two", 2);
+//myDic.Set("three", 3);
+//Console.WriteLine(myDic.Remove("three"));
+//myDic.Print();
+//myDic.Set("four", 4);
+//Console.WriteLine(myDic.Get("three"));
+//myDic.Set("five", 5);
+//Console.WriteLine(myDic.Get("four"));
+//myDic.Set("six", 6);
+//Console.WriteLine(myDic.Remove("five"));
+//Console.WriteLine(myDic.Remove("six"));
+//Console.WriteLine(myDic.Remove("two"));
+//Console.WriteLine(myDic.Remove("one"));
+//Console.WriteLine(myDic.Remove("four"));
+//myDic.Print();
+//myDic.Set("zero", 0);
+//myDic.Set("one", 1);
+//myDic.Print();
+#endregion
+
+#region  Hash
+HashFNV1a hash = new HashFNV1a();
+hash.HashFNV1a32("This is Original Text");
+hash.HashFNV1a64("This is Original Text");
+hash.HashFNV1a128("This is Original Text");
+hash.HashFNV1a256("This is Original Text");
+hash.HashFNV1a512("This is Original Text");
+//hash.HashFNV1a32("This is Original Text");
+//hash.HashFNV1a32("This is Original Text");
 #endregion

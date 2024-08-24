@@ -97,6 +97,7 @@
 #endregion
 
 #region QueueLinkedListBased
+using DataDeCoded.DictionaryArrayBased;
 using DataDeCoded.QueueArrayBased;
 
 //QueueLinkedListBased<int> myLinkedListQueue = new(false);
@@ -110,39 +111,64 @@ using DataDeCoded.QueueArrayBased;
 
 #endregion
 
+#region QueueArrayBased
 
-#region QueueLinkedListBased
+//QueueArrayBased<int> myArrayQueue = new(false);
 
-QueueArrayBased<int> myArrayQueue = new(false);
+//myArrayQueue.EnQueue(0);
+//myArrayQueue.EnQueue(1);
+//myArrayQueue.EnQueue(2);
+//myArrayQueue.EnQueue(3);
+//myArrayQueue.EnQueue(4);
+//myArrayQueue.EnQueue(5);
+//myArrayQueue.EnQueue(6);
+//myArrayQueue.EnQueue(7);
+//myArrayQueue.EnQueue(8);
+//myArrayQueue.EnQueue(9);
+//myArrayQueue.EnQueue(10);
+//myArrayQueue.EnQueue(11);
+//myArrayQueue.Print();
 
-myArrayQueue.EnQueue(0);
-myArrayQueue.EnQueue(1);
-myArrayQueue.EnQueue(2);
-myArrayQueue.EnQueue(3);
-myArrayQueue.EnQueue(4);
-myArrayQueue.EnQueue(5);
-myArrayQueue.EnQueue(6);
-myArrayQueue.EnQueue(7);
-myArrayQueue.EnQueue(8);
-myArrayQueue.EnQueue(9);
-myArrayQueue.EnQueue(10);
-myArrayQueue.EnQueue(11);
-myArrayQueue.Print();
+//myArrayQueue.DeQueue();
+//myArrayQueue.Print();
 
-myArrayQueue.DeQueue();
-myArrayQueue.Print();
+//myArrayQueue.DeQueue();
+//myArrayQueue.Print();
 
-myArrayQueue.DeQueue();
-myArrayQueue.Print();
+//myArrayQueue.DeQueue();
+//myArrayQueue.Print();
 
-myArrayQueue.DeQueue();
-myArrayQueue.Print();
+//myArrayQueue.DeQueue();
+//myArrayQueue.Print();
 
-myArrayQueue.DeQueue();
-myArrayQueue.Print();
+//Console.WriteLine(myArrayQueue.Top());
 
-Console.WriteLine(myArrayQueue.Top());
+//myArrayQueue.Print();
 
-myArrayQueue.Print();
+#endregion
+
+#region DictionaryArrayBased
+DictionaryArrayBased<string, int> myDic = new DictionaryArrayBased<string, int>();
+myDic.Set("zero", 0);
+myDic.Set("one", 1);
+Console.WriteLine(myDic.Get("one"));
+Console.WriteLine(myDic.Remove("zero"));
+myDic.Set("two", 2);
+myDic.Set("three", 3);
+Console.WriteLine(myDic.Remove("three"));
+myDic.Set("four", 4);
+Console.WriteLine(myDic.Get("three"));
+myDic.Set("five", 5);
+Console.WriteLine(myDic.Get("four"));
+myDic.Set("six", 6);
+Console.WriteLine(myDic.Remove("five"));
+Console.WriteLine(myDic.Remove("six"));
+Console.WriteLine(myDic.Remove("two"));
+Console.WriteLine(myDic.Remove("one"));
+Console.WriteLine(myDic.Remove("four"));
+myDic.Print();
+myDic.Set("zero", 0);
+myDic.Set("one", 1);
+myDic.Print();
 
 #endregion

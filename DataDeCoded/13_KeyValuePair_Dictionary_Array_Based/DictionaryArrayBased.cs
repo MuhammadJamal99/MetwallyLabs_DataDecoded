@@ -76,6 +76,7 @@ public class DictionaryArrayBased<TKey, TValue> where TKey : class
         StringBuilder result = new();
         result.Append("----------------------------------\n");
         result.Append(string.Format("Size {0}\n", Size()));
+        result.Append("key : Value \n");
         for (int i = 0; i < _entriesCount; i++) 
         {
             result.Append(string.Format("{0} : {1} \n", _baseArray[i].Key, _baseArray[i].Value));

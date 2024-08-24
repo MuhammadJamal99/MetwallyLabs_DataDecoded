@@ -98,6 +98,7 @@
 
 #region QueueLinkedListBased
 using DataDeCoded.DictionaryArrayBased;
+using DataDeCoded.DictionaryLinkedListBased;
 using DataDeCoded.QueueArrayBased;
 
 //QueueLinkedListBased<int> myLinkedListQueue = new(false);
@@ -148,27 +149,54 @@ using DataDeCoded.QueueArrayBased;
 #endregion
 
 #region DictionaryArrayBased
-DictionaryArrayBased<string, int> myDic = new DictionaryArrayBased<string, int>();
+//DictionaryArrayBased<string, int> myDic = new DictionaryArrayBased<string, int>();
+//myDic.Set("zero", 0);
+//myDic.Set("one", 1);
+//Console.WriteLine(myDic.Get("one"));
+//Console.WriteLine(myDic.Remove("zero"));
+//myDic.Set("two", 2);
+//myDic.Set("three", 3);
+//Console.WriteLine(myDic.Remove("three"));
+//myDic.Set("four", 4);
+//Console.WriteLine(myDic.Get("three"));
+//myDic.Set("five", 5);
+//Console.WriteLine(myDic.Get("four"));
+//myDic.Set("six", 6);
+//Console.WriteLine(myDic.Remove("five"));
+//Console.WriteLine(myDic.Remove("six"));
+//Console.WriteLine(myDic.Remove("two"));
+//Console.WriteLine(myDic.Remove("one"));
+//Console.WriteLine(myDic.Remove("four"));
+//myDic.Print();
+//myDic.Set("zero", 0);
+//myDic.Set("one", 1);
+//myDic.Print();
+#endregion
+
+#region DictionaryLinkedListBased
+DictionaryLinkedListBased<string, int> myDic = new DictionaryLinkedListBased<string, int>();
 myDic.Set("zero", 0);
 myDic.Set("one", 1);
 Console.WriteLine(myDic.Get("one"));
 Console.WriteLine(myDic.Remove("zero"));
+myDic.Print();
+
 myDic.Set("two", 2);
 myDic.Set("three", 3);
 Console.WriteLine(myDic.Remove("three"));
+myDic.Print();
 myDic.Set("four", 4);
-Console.WriteLine(myDic.Get("three"));
+//Console.WriteLine(myDic.Get("three"));
 myDic.Set("five", 5);
-Console.WriteLine(myDic.Get("four"));
+//Console.WriteLine(myDic.Get("four"));
 myDic.Set("six", 6);
-Console.WriteLine(myDic.Remove("five"));
-Console.WriteLine(myDic.Remove("six"));
-Console.WriteLine(myDic.Remove("two"));
-Console.WriteLine(myDic.Remove("one"));
-Console.WriteLine(myDic.Remove("four"));
+//Console.WriteLine(myDic.Remove("five"));
+//Console.WriteLine(myDic.Remove("six"));
+//Console.WriteLine(myDic.Remove("two"));
+//Console.WriteLine(myDic.Remove("one"));
+//Console.WriteLine(myDic.Remove("four"));
 myDic.Print();
 myDic.Set("zero", 0);
 myDic.Set("one", 1);
 myDic.Print();
-
 #endregion

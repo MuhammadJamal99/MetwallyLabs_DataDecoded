@@ -216,7 +216,7 @@ public class LinkedList<T>
         else if (IsHead(node))
         {
             Head = node.Next;
-
+            Length -= 1;
             return true;
         }
         else

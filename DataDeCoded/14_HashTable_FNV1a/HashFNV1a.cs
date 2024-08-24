@@ -32,7 +32,6 @@ public class HashFNV1a
         Console.WriteLine(" Data : {0} \n Hashed Value: {1} \n Hex Hahed Value: {2}", str, hash, hash.ToString("x"));
         return hash;
     }
-
     public BigInteger HashFNV1a128(string str)
     {
         BigInteger offsetBasis = BigInteger.Parse("144066263297769815596495629667062367629");

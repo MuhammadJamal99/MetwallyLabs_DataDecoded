@@ -99,6 +99,7 @@
 #region QueueLinkedListBased
 using DataDeCoded.DictionaryArrayBased;
 using DataDeCoded.DictionaryLinkedListBased;
+using DataDeCoded.HashTable;
 using DataDeCoded.HashTableFunctions;
 using DataDeCoded.QueueArrayBased;
 
@@ -203,12 +204,30 @@ using DataDeCoded.QueueArrayBased;
 #endregion
 
 #region  Hash
-HashFNV1a hash = new HashFNV1a();
-hash.HashFNV1a32("This is Original Text");
-hash.HashFNV1a64("This is Original Text");
-hash.HashFNV1a128("This is Original Text");
-hash.HashFNV1a256("This is Original Text");
-hash.HashFNV1a512("This is Original Text");
+//HashFNV1a hash = new HashFNV1a();
 //hash.HashFNV1a32("This is Original Text");
-//hash.HashFNV1a32("This is Original Text");
+//hash.HashFNV1a64("This is Original Text");
+//hash.HashFNV1a128("This is Original Text");
+//hash.HashFNV1a256("This is Original Text");
+//hash.HashFNV1a512("This is Original Text");
+////hash.HashFNV1a32("This is Original Text");
+////hash.HashFNV1a32("This is Original Text");
+#endregion
+
+#region HashTable
+HashTable<string, string> myHashTable = new HashTable<string, string>();
+myHashTable.Print();
+myHashTable.Set("Sinar", "sinar@gmail.com");
+myHashTable.Set("Elvis", "elvis@gmail.com");
+myHashTable.Set("Tane", "tane@gmail.com");
+myHashTable.Print();
+
+myHashTable.Set("Gerti", "gerti@gmail.com");
+myHashTable.Set("Arist", "arist@gmail.com");
+myHashTable.Print();
+//Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
+//Console.WriteLine("[Get] {0}", myHashTable.Get("Tane"));
+//Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
+//Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
+
 #endregion

@@ -25,7 +25,7 @@ public class HashTable<TKey, TValue> where TKey : class
         int hash = GetHash32(key);
         if (_baseArray[hash] is not null && !_baseArray[hash].Key.Equals(key))
         {
-            hash = LinearProprobingCollisionHandling(key, hash, true);
+            hash = LinearProprobingCollisionHandling(key, hash, false);
         }
         if (hash == -1 || _baseArray[hash] is null)
         {
@@ -51,7 +51,7 @@ public class HashTable<TKey, TValue> where TKey : class
             hash = hash ^ dataByte;
             hash = hash * fnvPrime;
         }
-        Console.WriteLine(" Data : {0} \n Hashed Value: {1} \n Hex Hahed Value: {2}", key.ToString(), hash, hash.ToString("x"));
+        Console.WriteLine("[Hash] {0} {1} ", key.ToString(), hash);
         return (int)(hash % (uint)_baseArray.Length);
     }
     int LinearProprobingCollisionHandling(TKey key, int hash, bool isSet)
@@ -60,6 +60,7 @@ public class HashTable<TKey, TValue> where TKey : class
         for (int i = 1; i < _baseArray.Length; i++) 
         {
             newHash = (hash + i) % _baseArray.Length;
+            Console.WriteLine("[Coll] {0} {1}, New Hashed Value: {1}", key.ToString(), hash, newHash);
             if (isSet && (_baseArray[newHash] is null || _baseArray[newHash].Key.Equals(key))) 
             {
                 return newHash;
@@ -104,9 +105,11 @@ public class HashTable<TKey, TValue> where TKey : class
             return;
         }
         int newSize = _baseArray.Length * 2;
+        Console.WriteLine("[Resize] From {0} To {1}", _baseArray.Length, newSize);
         KeyValuePair[] baseArrayCopy = new KeyValuePair[_baseArray.Length];
         Array.Copy(_baseArray, 0, baseArrayCopy, 0, baseArrayCopy.Length);
         _baseArray = new KeyValuePair[newSize];
+        _entriesCount = 0;
         foreach (KeyValuePair? item in baseArrayCopy) 
         {
             if (item is null)
@@ -129,8 +132,12 @@ public class HashTable<TKey, TValue> where TKey : class
         result.Append("----------------------------------\n");
         result.Append(string.Format("Size {0}\n", Size()));
         result.Append("key : Value \n");
-        for (int i = 0; i < _entriesCount; i++)
+        for (int i = 0; i < _baseArray.Length; i++)
         {
+            if (_baseArray[i] is null) 
+            {
+                continue;
+            }
             result.Append(string.Format("{0} : {1} \n", _baseArray[i].Key, _baseArray[i].Value));
         }
         result.Append("\n----------------------------------\n");

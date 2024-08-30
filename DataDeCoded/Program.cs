@@ -97,11 +97,11 @@
 #endregion
 
 #region QueueLinkedListBased
-using DataDeCoded.DictionaryArrayBased;
-using DataDeCoded.DictionaryLinkedListBased;
-using DataDeCoded.HashTable;
-using DataDeCoded.HashTableFunctions;
-using DataDeCoded.QueueArrayBased;
+//using DataDeCoded.DictionaryArrayBased;
+//using DataDeCoded.DictionaryLinkedListBased;
+//using DataDeCoded.HashTable;
+//using DataDeCoded.HashTableFunctions;
+//using DataDeCoded.QueueArrayBased;
 
 //QueueLinkedListBased<int> myLinkedListQueue = new(false);
 
@@ -215,19 +215,18 @@ using DataDeCoded.QueueArrayBased;
 #endregion
 
 #region HashTable
-HashTable<string, string> myHashTable = new HashTable<string, string>();
-myHashTable.Print();
-myHashTable.Set("Sinar", "sinar@gmail.com");
-myHashTable.Set("Elvis", "elvis@gmail.com");
-myHashTable.Set("Tane", "tane@gmail.com");
-myHashTable.Print();
+//HashTable<string, string> myHashTable = new HashTable<string, string>();
+//myHashTable.Print();
+//myHashTable.Set("Sinar", "sinar@gmail.com");
+//myHashTable.Set("Elvis", "elvis@gmail.com");
+//myHashTable.Set("Tane", "tane@gmail.com");
+//myHashTable.Print();
 
-myHashTable.Set("Gerti", "gerti@gmail.com");
-myHashTable.Set("Arist", "arist@gmail.com");
-myHashTable.Print();
+//myHashTable.Set("Gerti", "gerti@gmail.com");
+//myHashTable.Set("Arist", "arist@gmail.com");
+//myHashTable.Print();
 //Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
 //Console.WriteLine("[Get] {0}", myHashTable.Get("Tane"));
 //Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
 //Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
-
 #endregion

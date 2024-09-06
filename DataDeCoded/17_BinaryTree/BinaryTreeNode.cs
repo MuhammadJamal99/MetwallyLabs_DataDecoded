@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 
 namespace DataDeCoded.BinaryTree;
 
-public class TreeNode<T>
+public class BinaryTreeNode<T>
 {
     public T Data { get; set; }
-    public TreeNode<T> Parent { get; set; }
-    public TreeNode<T> Left { get; set; }
-    public TreeNode<T> Right { get; set; }
-    public TreeNode(T data)
+    public BinaryTreeNode<T> Parent { get; set; }
+    public BinaryTreeNode<T> Left { get; set; }
+    public BinaryTreeNode<T> Right { get; set; }
+    public BinaryTreeNode(T data)
     {
         Data = data;
     }

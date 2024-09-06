@@ -230,3 +230,20 @@
 //Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
 //Console.WriteLine("[Get] {0}", myHashTable.Get("Sinar"));
 #endregion
+
+#region BinaryTree
+using DataDeCoded.BinaryTree;
+//8, 3, 10, 1, 6, 4, 7, 14, 13
+BinaryTree<int> binaryTree = new();
+binaryTree.Insert(8);
+binaryTree.Insert(3);
+binaryTree.Insert(10);
+binaryTree.Insert(1);
+binaryTree.Insert(6);
+binaryTree.Insert(4);
+binaryTree.Insert(7);
+binaryTree.Insert(14);
+binaryTree.Insert(13);
+
+binaryTree.Print();
+#endregion

@@ -23,7 +23,7 @@ public class QueueArrayBased<T>
         {
             T[] newBaseArray = new T[_baseArray.Length + _initalSize];
 
-            Buffer.BlockCopy(_baseArray, 0, newBaseArray, 0, _baseArray.Length * sizeof(int));
+            Array.Copy(_baseArray, 0, newBaseArray, 0, _baseArray.Length);
             _baseArray = newBaseArray;
         }
     }

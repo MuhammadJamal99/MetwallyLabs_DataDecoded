@@ -47,18 +47,65 @@ public class BinaryTree<T> where T : IComparable<T>
             }
         }
     }
-    private int GetDepth(BinaryTreeNode<T> node)
+
+    public void PreOrderTraversal()
+    {
+        InternalPreOrderTraversal(root);
+    }
+    private void InternalPreOrderTraversal(BinaryTreeNode<T> node)
+    {
+        if(node is null)
+        {
+            return;
+        }
+        Console.Write(node.Data + " -> ");
+        InternalPreOrderTraversal(node.Left);
+        InternalPreOrderTraversal(node.Right);
+    }
+    public void InOrderTraversal()
+    {
+        InternalInOrderTraversal(root);
+    }
+    private void InternalInOrderTraversal(BinaryTreeNode<T> node)
+    {
+        if (node is null)
+        {
+            return;
+        }
+        InternalPreOrderTraversal(node.Left);
+        Console.Write(node.Data + " -> ");
+        InternalPreOrderTraversal(node.Right);
+    }
+    public void PostOrderTraversal()
+    {
+        InternalPostOrderTraversal(root);
+    }
+    private void InternalPostOrderTraversal(BinaryTreeNode<T> node)
+    {
+        if (node is null)
+        {
+            return;
+        }
+        InternalPreOrderTraversal(node.Left);
+        InternalPreOrderTraversal(node.Right);
+        Console.Write(node.Data + " -> ");
+    }
+    public int Hieght()
+    {
+        return GetHieght(root);
+    }
+    private int GetHieght(BinaryTreeNode<T> node)
     {
         if (node == null)
             return 0;
-        return 1 + Math.Max(GetDepth(node.Left), GetDepth(node.Right));
+        return 1 + Math.Max(GetHieght(node.Left), GetHieght(node.Right));
     }
     public void Print()
     {
         if (root == null)
             return;
 
-        int depth = GetDepth(root);
+        int depth = GetHieght(root);
         List<List<string>> lines = new();
         List<BinaryTreeNode<T>> level = new(){ root };
         int width = (int)Math.Pow(2, depth) * 3;

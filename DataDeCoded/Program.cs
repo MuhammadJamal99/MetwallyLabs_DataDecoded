@@ -232,22 +232,55 @@
 #endregion
 
 #region BinaryTree
-using DataDeCoded.BinaryTree;
-BinaryTree<char> binaryTree = new();
-binaryTree.Insert('A');
-binaryTree.Insert('B');
-binaryTree.Insert('C');
-binaryTree.Insert('D');
-binaryTree.Insert('E');
-binaryTree.Insert('F');
-binaryTree.Insert('G');
-binaryTree.Insert('H');
-binaryTree.Insert('I');
-binaryTree.PreOrderTraversal();
-Console.WriteLine();
-binaryTree.InOrderTraversal();
-Console.WriteLine();
-binaryTree.PostOrderTraversal();
-binaryTree.Print();
+//using DataDeCoded.BinaryTree;
+//BinaryTree<char> binaryTree = new();
+//binaryTree.Insert('A');
+//binaryTree.Insert('B');
+//binaryTree.Insert('C');
+//binaryTree.Insert('D');
+//binaryTree.Insert('E');
+//binaryTree.Insert('F');
+//binaryTree.Insert('G');
+//binaryTree.Insert('H');
+//binaryTree.Insert('I');
+//binaryTree.PreOrderTraversal();
+//Console.WriteLine();
+//binaryTree.InOrderTraversal();
+//Console.WriteLine();
+//binaryTree.PostOrderTraversal();
+//binaryTree.Print();
 
+#endregion
+
+#region Binary Search Tree
+using DataDeCoded.BinarySearchTree;
+
+BinarySearchTree<int> binarySearchTree = new();
+//binarySearchTree.Insert(1);
+//binarySearchTree.Insert(2);
+//binarySearchTree.Insert(3);
+//binarySearchTree.Insert(4);
+//binarySearchTree.Insert(5);
+//binarySearchTree.Insert(6);
+//binarySearchTree.InOrderTraversal();
+//binarySearchTree.Print();
+
+//binarySearchTree.Insert(1);
+//binarySearchTree.Insert(4);
+//binarySearchTree.Insert(2);
+//binarySearchTree.Insert(3);
+//binarySearchTree.Insert(6);
+//binarySearchTree.Insert(5);
+//binarySearchTree.InOrderTraversal();
+//binarySearchTree.Print();
+
+binarySearchTree.Insert(4);
+binarySearchTree.Insert(2);
+binarySearchTree.Insert(1);
+binarySearchTree.Insert(3);
+binarySearchTree.Insert(5);
+binarySearchTree.Insert(6);
+binarySearchTree.InOrderTraversal();
+binarySearchTree.Print();
+Console.WriteLine(binarySearchTree.IsExists(5));
 #endregion
